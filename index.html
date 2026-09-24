@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>It's Elara's Day 🎂</title>
+
+<style>
+/* =========================
+   BASIC SETUP
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+     linear-gradient(rgba(8, 8, 13, 0.75), rgba(8, 8, 13, 0.85)),
+        url("images/background.jpeg") center/cover fixed no-repeat;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 80, 150, 0.12), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(80, 120, 255, 0.12), transparent 30%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* =========================
+   LANDING PAGE
+========================= */
+
+#landing {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.landing-content {
+    animation: fadeIn 2s ease;
+}
+
+.emoji {
+    font-size: 70px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.landing-content h1 {
+    font-size: clamp(40px, 8vw, 90px);
+    margin: 20px 0 10px;
+    background: linear-gradient(90deg, #ff7eb3, #ff758c, #a78bfa);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.landing-content p {
+    color: #aaa;
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+
+.enter-btn {
+    border: none;
+    padding: 16px 35px;
+    border-radius: 50px;
+    background: white;
+    color: black;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.enter-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(255,255,255,0.4);
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+#main {
+    display: none;
+}
+
+section {
+    min-height: 100vh;
+    padding: 100px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 45px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.section-subtitle {
+    color: #999;
+    text-align: center;
+    margin-top: -35px;
+    margin-bottom: 50px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: clamp(45px, 8vw, 90px);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #aaa;
+    font-size: 20px;
+    max-width: 650px;
+    line-height: 1.7;
+}
+
+.highlight {
+    color: #ff7eb3;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards {
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.09);
+}
+
+.card .icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #999;
+    line-height: 1.6;
+}
+
+/* =========================
+   MEMORIES
+========================= */
+
+.gallery {
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.memory {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    height: 300px;
+    background: #15151c;
+}
+
+.memory img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.memory:hover img {
+    transform: scale(1.08);
+}
+
+.memory-caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 40px 20px 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline {
+    max-width: 700px;
+    width: 100%;
+    border-left: 2px solid #ff7eb3;
+    padding-left: 30px;
+}
+
+.timeline-item {
+    margin-bottom: 45px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -40px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: #ff7eb3;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #ff7eb3;
+}
+
+.timeline-item h3 {
+    color: #ff7eb3;
+    margin-bottom: 8px;
+}
+
+.timeline-item p {
+    color: #aaa;
+    line-height: 1.7;
+}
+
+/* =========================
+   REASONS
+========================= */
+
+.reason-box {
+    width: 100%;
+    max-width: 700px;
+    min-height: 220px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.reason-number {
+    color: #ff7eb3;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.reason-text {
+    font-size: 27px;
+    line-height: 1.5;
+}
+
+.next-btn {
+    margin-top: 30px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+/* =========================
+   SECRET
+========================= */
+
+.secret-box {
+    text-align: center;
+    max-width: 600px;
+}
+
+.secret-btn {
+    margin-top: 30px;
+    padding: 16px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#secretMessage {
+    display: none;
+    margin-top: 30px;
+    font-size: 25px;
+    color: #ff7eb3;
+    animation: fadeIn 1s;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final {
+    text-align: center;
+}
+
+.final h2 {
+    font-size: clamp(45px, 8vw, 85px);
+    margin-bottom: 30px;
+}
+
+.final p {
+    max-width: 700px;
+    color: #aaa;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.heart {
+    font-size: 70px;
+    margin-bottom: 25px;
+    animation: heartbeat 1.5s infinite;
+}
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    section {
+        padding: 80px 20px;
+    }
+
+    .section-title {
+        font-size: 35px;
+    }
+
+    .reason-text {
+        font-size: 21px;
+    }
+
+    .timeline {
+        padding-left: 25px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     LANDING
+========================= -->
+
+<div id="landing">
+
+    <div class="landing-content">
+
+        <div class="emoji">🎂</div>
+
+        <h1>It's Elara's Day</h1>
+
+        <p>
+            A tiny effort dedicated to a very special friend,Samiha Rahmana Moon.
+        </p>
+
+        <button class="enter-btn" onclick="enterSite()">
+            Enter →
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MAIN WEBSITE
+========================= -->
+
+<div id="main">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="emoji">🎉</div>
+
+        <h2>
+            HAPPY BIRTHDAY,
+            <span class="highlight">Puchku</span>
+        </h2>
+
+        <p>
+            I maybe wouldn't create it if you didn't go to Cumilla...But
+            it seems so cool to me to create such a website for you.
+        </p>
+
+    </section>
+
+
+    <!-- MENU -->
+
+    <section>
+
+        <h2 class="section-title">
+            Your Birthday Headquarters
+        </h2>
+
+        <div class="cards">
+
+            <div class="card" onclick="scrollToSection('memories')">
+                <div class="icon">📸</div>
+                <h3>Our Memories</h3>
+                <p>
+                    Evidence of the chaos and moments we've created.
+                </p>
+            </div>
+
+            <div class="card" onclick="scrollToSection('timeline')">
+                <div class="icon">🕰️</div>
+                <h3>Our Story</h3>
+                <p>
+                    How two strangers became best friends to each other.
+                </p>
+            </div>
+
+            <div class="card" onclick="scrollToSection('reasons')">
+                <div class="icon">🏆</div>
+                <h3>10 Reasons</h3>
+                <p>
+                    Why You become one of the best friends of mine.
+                </p>
+            </div>
+
+            <div class="card" onclick="scrollToSection('secret')">
+                <div class="icon">🔐</div>
+                <h3>Secret Room</h3>
+                <p>
+                    Don't try to enter the room.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MEMORIES -->
+
+    <section id="memories">
+
+        <h2 class="section-title">
+            📸 Our Memories
+        </h2>
+
+        <p class="section-subtitle">
+            tho we didn't meet face to face, still some random moments become unforgettable memory.
+        </p>
+
+        <div class="gallery">
+
+            <div class="memory">
+
+                <img src="images/photo1.jpeg">
+
+                <div class="memory-caption">
+                    Our first legendary moment.
+                </div>
+
+            </div>
+
+
+            <div class="memory">
+
+                <img src="images/photo2.jpeg">
+
+                <div class="memory-caption">
+                    The first pic of you I saw,
+                    the blue color suits you well&#128153&#128153.
+                </div>
+
+            </div>
+
+
+            <div class="memory">
+
+                <img src="images/photo3.jpeg">
+
+                <div class="memory-caption">
+                    I know it shouldn't have attached here,
+                    kharap hok valo hok, memory tww tai rakhlam..(tomar privacy &#128514)
+                </div>
+
+            </div>
+
+
+            <div class="memory">
+
+                <img src="images/photo4.jpeg">
+
+                <div class="memory-caption">
+                   You were looking so beautiful...btw next eid a salamir kotha mone koray dio&#128522.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TIMELINE -->
+
+    <section id="timeline">
+
+        <h2 class="section-title">
+            🕰️ Our Story
+        </h2>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <h3>16 Sept 2025 — The Beginning</h3>
+
+                <p>
+                    Suddenly my phone made a sound, I saw someone sent you a 
+                    message, but I didn't know that that person would become
+                    a best friend in my life....This is where the story began...
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <h3>29 Jan 2026 — The actual introduction Begins after 3 months of gap</h3>
+
+                <p>
+                    Somehow we went from barely knowing
+                    each other to talking about absolutely everything.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <h3>27 May 2026 — The Happiest Moment</h3>
+
+                <p>
+                    You were migrated to civil from IPE.And You seemed so 
+                    happy which made me happy also.
+                </p>
+
+            </div>
+            
+            <div class="timeline-item">
+
+                <h3> 08 April 2026 — First time I heard your Voice</h3>
+
+                <p>
+                    "Sundor eii to hoiche, kharap keno hobe hae??"
+                    Voice mashallah oneeeek valo, hudai khali kahini koro.
+                    (For your convenience I attached the voice, Caile sunte paro..&#128521;)
+                    and Most Importantly for the very first time I sent a song to someone that day.
+
+                </p>
+
+            </div>
+            
+            <div class="timeline-item">
+
+                <h3> 13 July 2026 — I day I got hurt the most</h3>
+
+                <p>
+                    This is the day , you make me feel a very bad person. Though You said all these
+                    from you anger and that's why I just forgot it, still this is a memory for both of us.
+                    Don't think much about this section.Okay??
+                </p>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <h3>24 Spet 2026 — 🎂(The Night Lighthouse was born this day)</h3>
+
+                <p>
+                    The first birthday of you with me(though not 1st but that one won't
+                    be considered, Cz I was out of network then)
+                    And somehow we're still here.
+                    Different places, same friendship.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- REASONS -->
+
+    <section id="reasons">
+
+        <h2 class="section-title">
+            🏆 10 Reasons You're My Best Friend
+        </h2>
+
+        <div class="reason-box">
+
+            <div class="reason-number" id="reasonNumber">
+                REASON 1 / 10
+            </div>
+
+            <div class="reason-text" id="reasonText">
+               "I know one day you will offer me an Ice-Cream and very soon I guess"
+            </div>
+
+            <button class="next-btn" onclick="nextReason()">
+                Next →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- SECRET -->
+
+    <section id="secret">
+
+        <div class="secret-box">
+
+            <h2 class="section-title">
+                🔐 Secret Room
+            </h2>
+
+            <p>
+                There is absolutely nothing interesting
+                behind this button.
+            </p>
+
+            <button class="secret-btn" onclick="revealSecret()">
+                DO NOT PRESS
+            </button>
+
+            <div id="secretMessage">
+                I TOLD YOU NOT TO 😭(Ami jantam tumi amar kono kothai suno na)
+                <br><br>
+                Okay fine...
+                Khoti puron hisebe Ice-Cream Khawao ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+
+    <section class="final">
+
+        <div class="heart">
+            ❤️
+        </div>
+
+        <h2>
+            One Last Thing...
+        </h2>
+
+        <p>
+
+            If distance could measure friendship,
+            we'd probably be terrible at it.
+
+            <br><br>
+
+            Because somehow, even from far away,
+            you're still one of the people closest to me.
+
+            <br><br>
+
+            I couldn't be there in person today,
+            so I made this little corner of the internet for you. And obviously
+            I tried to highlight the happiest moments and also the sad moments...
+            Ignore the sad one because we usually keep doing faults by which we are 
+            not judged. And you are really a very beauutiful, soft-hearted,matured,
+            responsible and passionate girl. Keep working hard till you fulfill your 
+            dreams, And for any help in this long Journey, Inshallah I will always be 
+            there with you as a true friend.(oo hae, privacy niye insecure feel
+            korio naa, no one except the link will visit it) And finally 
+            thanks for everything And Sorry for Nothing.
+
+
+            <br><br>
+
+            <strong>
+                Many Many Happy returns of the day again, SRM.🎉🎈🎁
+            </strong>
+
+            <br><br>
+
+            Here's to another year of memories,
+            terrible jokes, random conversations,
+            and hopefully one day celebrating
+            your birthday in the same place together.
+
+        </p>
+
+    </section>
+
+</div>
+
+
+<!-- MUSIC -->
+
+<button class="music-btn" onclick="toggleMusic()">
+    🎵
+    stop/start
+</button>
+
+<audio id="music" loop>
+    <source src="samihavoice.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+/* =========================
+   ENTER WEBSITE
+========================= */
+
+function enterSite() {
+
+    document.getElementById("landing").style.display = "none";
+
+    document.getElementById("main").style.display = "block";
+
+    window.scrollTo(0,0);
+
+    launchConfetti();
+}
+
+
+/* =========================
+   SCROLL
+========================= */
+
+function scrollToSection(id) {
+
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   REASONS
+========================= */
+
+const reasons = [
+    "I know one day you will offer me an Ice-Cream and very soon I guess",
+
+    "You don't mind when I forget something even something very special.",
+
+    "You somehow tolerate me",
+
+    "You always appreciate others.",
+
+    "You know way too much about me and still haven't escaped.",
+
+    "You can turn a completely normal conversation into absolute chaos.",
+
+    "Again you can turn an absolute chaos into a normal conversation",
+
+    "You don't judge me by my immature works",
+
+    "You are one of the few people I can genuinely share everything.",
+
+    "Most importantly you're simply YOU. ❤️"
+
+];
+
+let reasonIndex = 0;
+
+function nextReason() {
+
+    reasonIndex++;
+
+    if(reasonIndex >= reasons.length) {
+
+        reasonIndex = 0;
+
+    }
+
+    document.getElementById("reasonNumber").innerText =
+        "REASON " + (reasonIndex + 1) + " / 10";
+
+    document.getElementById("reasonText").innerText =
+        reasons[reasonIndex];
+
+}
+
+
+/* =========================
+   SECRET
+========================= */
+
+function revealSecret() {
+
+    const message =
+        document.getElementById("secretMessage");
+
+    message.style.display = "block";
+
+    launchConfetti();
+
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+let musicPlaying = false;
+
+function toggleMusic() {
+
+    const music =
+        document.getElementById("music");
+
+    if(!musicPlaying) {
+
+        music.play();
+
+        musicPlaying = true;
+
+    } else {
+
+        music.pause();
+
+        musicPlaying = false;
+
+    }
+
+}
+
+
+/* =========================
+   SIMPLE CONFETTI
+========================= */
+
+function launchConfetti() {
+
+    for(let i = 0; i < 80; i++) {
+
+        const confetti =
+            document.createElement("div");
+
+        confetti.innerHTML = "•";
+
+        confetti.style.position = "fixed";
+
+        confetti.style.left =
+            Math.random() * 100 + "vw";
+
+        confetti.style.top = "-20px";
+
+        confetti.style.fontSize =
+            (Math.random() * 20 + 10) + "px";
+
+        confetti.style.color =
+            ["#ff7eb3","#a78bfa","#60a5fa","#facc15","#ffffff"]
+            [Math.floor(Math.random() * 5)];
+
+        confetti.style.zIndex = "9999";
+
+        document.body.appendChild(confetti);
+
+        const duration =
+            Math.random() * 2000 + 2000;
+
+        confetti.animate(
+
+            [
+                {
+                    transform: "translateY(0) rotate(0deg)",
+                    opacity: 1
+                },
+
+                {
+                    transform:
+                        "translateY(110vh) rotate(720deg)",
+                    opacity: 0
+                }
+            ],
+
+            {
+                duration: duration,
+                easing: "ease-out"
+            }
+
+        );
+
+        setTimeout(() => {
+
+            confetti.remove();
+
+        }, duration);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
